@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Popcorn Place</title>
+  <link rel="stylesheet" href="home.css">
+</head>
+<body>
+  
+  <header>
+    <div class="navbar">
+      <div style="display: flex; align-items: center;">
+        <img src="image/logo.png" alt="Popcorn Place Logo" class="logo-img">
+        <div class="logo"><span>Popcorn</span> Place</div>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="mainhome.html">Home</a></li>
+          <li><a href="login/after_loging_home/services/2D 3D.html">Services</a></li>
+          <li><a href="login/after_loging_home/contact/new 1.html">Contact Us</a></li>
+          <li><a href="login/after_loging_home/facilities/Food.html">Food & Beverages</a></li>
+          <li><a href="login/after_loging_home/facilities/Rest rooms.html">Other Facilities</a></li>
+          <li><a href="login/after_loging_home/Gallery/gallary .html">Gallery</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <h1>ITS TIME TO ENJOY! THE BEST <span class="highlight">ENTERTAINERS</span></h1>
+    <div style="margin: 20px 0;">
+      <a href="login/login.html" id="loginLink">
+        <button class="contact-btn">Login Now</button>
+      </a>
+      <a href="login/login.html" id="bookLink">
+        <button class="contact-btn outline-btn">Book Tickets</button>
+      </a>
+    </div>
+
+    <section class="events">
+      <div class="event">
+        <img src="image/1.jpeg" alt="ACTION MOVIES">
+        <p>ACTION MOVIES</p>
+      </div>
+      <div class="event">
+        <img src="image/12.jpg" alt="COMEDY MOVIES">
+        <p>COMEDY MOVIES</p>
+      </div>
+      <div class="event">
+        <img src="image/10.webp" alt="HORROR MOVIES">
+        <p>HORROR MOVIES</p>
+      </div>
+      <div class="event">
+        <img src="image/3.jpg" alt="THRILLER MOVIES">
+        <p>THRILLER MOVIES</p>
+      </div>
+      <div class="event">
+        <img src="image/9.jpeg" alt="CHILDREN'S MOVIES">
+        <p>CHILDREN'S MOVIES</p>
+      </div>
+      <div class="event">
+        <img src="image/5.jpeg" alt="3D MOVIES">
+        <p>3D MOVIES</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2026 Popcorn Place Cinema. All Rights Reserved.
+  </footer>
+
+  <script>
+    // Session State Management for Dynamic Landing Page Actions
+    document.addEventListener('DOMContentLoaded', () => {
+      const loggedIn = localStorage.getItem('loggedIn') === 'true';
+      const loginLink = document.getElementById('loginLink');
+      const bookLink = document.getElementById('bookLink');
+
+      if (loggedIn) {
+        // Update CTA references dynamically
+        loginLink.href = 'login/after_loging_home/booknow.html';
+        loginLink.querySelector('button').innerText = 'Go to Dashboard';
+        loginLink.querySelector('button').className = 'contact-btn';
+        
+        bookLink.href = 'login/after_loging_home/dashboard/dashboard.html';
+      }
+    });
+  </script>
+</body>
+</html>

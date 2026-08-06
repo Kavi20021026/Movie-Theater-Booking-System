@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Popcorn Place - Facilities</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../navbar.css">
+    <style>
+        /* Color Variables */
+        :root {
+            --primary: #000000;
+            --secondary: #000000;
+            --accent: #fefcfb;
+            --highlight: #ff9f1c;
+            --text: #000000;
+            --light-bg: #f8f9fa;
+            --success: #2ec4b6;
+            --warning: #e71d36;
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light-bg);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        @font-face {
+            font-family: 'Poppins';
+            src: url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--highlight);
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            color: #666;
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://images.unsplash.com/photo-1536440136628-849c177e76a1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1925&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            height: 100vh;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: var(--accent);
+            position: relative;
+            margin-top: 0;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(transparent, var(--light-bg));
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--highlight);
+            color: var(--primary);
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(255, 159, 28, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 159, 28, 0.4);
+            background: #ffb347;
+        }
+
+        /* Facilities Section */
+        .facilities-intro {
+            text-align: center;
+            background-color: white;
+            position: relative;
+            z-index: 1;
+        }
+
+        .facilities-intro::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(white, var(--light-bg));
+            z-index: -1;
+        }
+
+        /* Food & Drinks Section */
+        .food-drinks {
+            position: relative;
+        }
+
+        .facility-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 0.8rem 1.5rem;
+            margin: 0 0.5rem 1rem;
+            background: transparent;
+            border: 2px solid var(--highlight);
+            color: var(--highlight);
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn.active, .tab-btn:hover {
+            background: var(--highlight);
+            color: var(--primary);
+        }
+
+        .facility-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .facility-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .facility-card.hidden {
+            transform: translateY(20px);
+            opacity: 0;
+            display: none;
+        }
+
+        .facility-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .facility-img {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .facility-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .facility-card:hover .facility-img img {
+            transform: scale(1.1);
+        }
+
+        .facility-category {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .facility-info {
+            padding: 1.5rem;
+        }
+
+        .facility-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .facility-info p {
+            color: #666;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .facility-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .facility-location {
+            display: flex;
+            align-items: center;
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        .facility-location i {
+            margin-right: 0.3rem;
+            color: var(--highlight);
+        }
+
+        .availability {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .available {
+            background: rgba(46, 196, 182, 0.2);
+            color: var(--success);
+        }
+
+        .unavailable {
+            background: rgba(231, 29, 54, 0.2);
+            color: var(--warning);
+        }
+
+        /* Toilet Facilities */
+        .toilet-facilities {
+            background: white;
+            position: relative;
+        }
+
+        .toilet-facilities::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(var(--light-bg), white);
+            z-index: -1;
+        }
+
+        .toilet-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .toilet-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .toilet-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .toilet-header {
+            background: var(--secondary);
+            color: white;
+            padding: 1.2rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .toilet-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--highlight);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            font-size: 1.3rem;
+            color: var(--primary);
+        }
+
+        .toilet-title {
+            flex: 1;
+        }
+
+        .toilet-title h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .toilet-title p {
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+
+        .toilet-body {
+            padding: 1.5rem;
+            flex: 1;
+        }
+
+        .toilet-features {
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-item {
+            display: flex;
+            margin-bottom: 0.7rem;
+        }
+
+        .feature-item i {
+            color: var(--highlight);
+            margin-right: 0.7rem;
+            margin-top: 0.2rem;
+        }
+
+        .feature-text h4 {
+            font-size: 0.95rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .feature-text p {
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .toilet-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .location-tag {
+            display: inline-block;
+            background: rgba(0, 31, 84, 0.1);
+            color: var(--secondary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        /* Map Section */
+        .map-section {
+            background: var(--light-bg);
+            position: relative;
+        }
+
+        .map-container {
+            height: 500px;
+            background: #ddd;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+
+        .map-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(10, 17, 40, 0.8), rgba(0, 31, 84, 0.9));
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .map-overlay h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .map-overlay p {
+            margin-bottom: 1.5rem;
+            max-width: 600px;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--accent);
+            padding: 5rem 0 2rem;
+            position: relative;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-col h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--highlight);
+        }
+
+        .footer-col p {
+            margin-bottom: 1rem;
+            opacity: 0.8;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: var(--accent);
+            text-decoration: none;
+            opacity: 0.8;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+            color: var(--highlight);
+            padding-left: 5px;
+        }
+
+        .footer-links a i {
+            margin-right: 0.5rem;
+            font-size: 0.8rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--accent);
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--highlight);
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--accent);
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+            }
+
+            .logo {
+                margin-bottom: 1rem;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav ul li {
+                margin: 0 0.5rem 0.5rem;
+            }
+
+            .hero {
+                height: auto;
+                padding: 8rem 0;
+                margin-top: 0;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            section {
+                padding: 3rem 0;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .container {
+                padding: 0 1.5rem;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .facility-grid, .toilet-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tab-btn {
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="navbar">
+            <div style="display: flex; align-items: center;">
+                <img src="../images/logo.png" alt="Popcorn Place Logo" class="logo-img">
+                <div class="logo"><span>Popcorn</span> Place</div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="../booknow.html">Home</a></li>
+                    <li><a href="../services/2D 3D.html">Services</a></li>
+                    <li><a href="../contact/new 1.html">Contact Us</a></li>
+                    <li><a href="../facilities/Food.html">Food & Beverages</a></li>
+                    <li><a href="../facilities/Rest rooms.html">Other Facilities</a></li>
+                    <li><a href="../Gallery/gallary .html">Gallery</a></li>
+                    <li><a href="#" id="logoutBtn" style="color: #ff3366;"><i class="bi bi-box-arrow-right"></i> Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Premium Cinema Facilities</h1>
+                <p>Enjoy gourmet dining options and luxurious amenities during your movie experience at Starlight Cinema</p>
+                <a href="#food-drinks" class="btn">Explore Facilities</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Facilities Intro -->
+    <section class="facilities-intro">
+        <div class="container">
+            <div class="section-title">
+                <h2>Enhanced Cinema Experience</h2>
+                <p>At Starlight Cinema, we've curated exceptional food, beverage, and facility options to complement your movie experience. Discover our premium offerings below.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Food & Drinks Section -->
+    <section class="food-drinks" id="food-drinks">
+        <div class="container">
+            <div class="section-title">
+                <h2>Food & Beverage Options</h2>
+                <p>From classic cinema snacks to gourmet dining experiences</p>
+            </div>
+            
+            <div class="facility-tabs">
+                <button class="tab-btn active" data-category="all">All Options</button>
+                <button class="tab-btn" data-category="food">Food</button>
+                <button class="tab-btn" data-category="drinks">Drinks</button>
+                <button class="tab-btn" data-category="special">Special Offers</button>
+            </div>
+            
+            <div class="facility-grid">
+                <!-- Classic Concession -->
+                <div class="facility-card" data-category="food">
+                    <div class="facility-img">
+                        <img src="https://gwynhall.com/wp-content/uploads/2021/04/cinema-concessions.jpg" alt="Classic Concession">
+                        <span class="facility-category">Food</span>
+                    </div>
+                    <div class="facility-info">
+                        <h3>Classic Concession Stand</h3>
+                        <p>Traditional cinema favorites including fresh popcorn, nachos with cheese, pretzels, and a variety of candy options.</p>
+                        <div class="facility-meta">
+                            <div class="facility-location">
+                                <i class="fas fa-map-marker-alt"></i> Main Lobby
+                            </div>
+                            <span class="availability available">Available</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gourmet Bistro -->
+                <div class="facility-card" data-category="food">
+                    <div class="facility-img">
+                        <img src="https://cdn.apartmenttherapy.info/image/upload/f_auto,q_auto:eco,c_fill,g_auto,w_728,h_546/k%2FPhoto%2FRecipes%2F2019-05-Grilled-Yogurt-Flatbreads%2FGrilledYogurtFlatbreadOption1" alt="Gourmet Bistro">
+                        <span class="facility-category">Food</span>
+                    </div>
+                    <div class="facility-info">
+                        <h3>Gourmet Bistro</h3>
+                        <p>Artisan sandwiches, fresh salads, flatbread pizzas, and charcuterie boards prepared with premium ingredients.</p>
+                        <div class="facility-meta">
+                            <div class="facility-location">
+                                <i class="fas fa-map-marker-alt"></i> East Wing
+                            </div>
+                            <span class="availability available">Available</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Craft Cocktail Bar -->
+                <div class="facility-card" data-category="drinks">
+                    <div class="facility-img">
+                        <img src="https://www.msccruises.co.za/-/media/global-contents/on-board/dining/drinks-packages/expandible/drinks-premium-extra-all-inclusive-exp.jpg?bc=transparent&as=1&mh=866&mw=1400&hash=0A8F2A8F0B4092F977346F668C4F8F60" alt="Craft Cocktail Bar">
+                        <span class="facility-category">Drinks</span>
+                    </div>
+                    <div class="facility-info">
+                        <h3>Craft Cocktail Bar</h3>
+                        <p>Signature cocktails, premium spirits, and an extensive wine list for guests 21+ (valid ID required).</p>
+                        <div class="facility-meta">
+                            <div class="facility-location">
+                                <i class="fas fa-map-marker-alt"></i> VIP Lounge
+                            </div>
+                            <span class="availability available">Available</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Specialty Coffee -->
+                <div class="facility-card" data-category="drinks">
+                    <div class="facility-img">
+                        <img src="https://img.freepik.com/premium-photo/hot-drinks-menu-with-coffee-tea-hot-chocolate_1079150-145709.jpg" alt="Specialty Coffee">
+                        <span class="facility-category">Drinks</span>
+                    </div>
+                    <div class="facility-info">
+                        <h3>Specialty Coffee Bar</h3>
+                        <p>Artisan coffee drinks, premium teas, and hot chocolate made with locally sourced ingredients.</p>
+                        <div class="facility-meta">
+                            <div class="facility-location">
+                                <i class="fas fa-map-marker-alt"></i> West Wing
+                            </div>
+                            <span class="availability available">Available</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Ice Cream Parlor -->
+                <div class="facility-card" data-category="food special">
+                    <div class="facility-img">
+                        <img src="https://thumbs.dreamstime.com/b/indulge-epic-dessert-milkshakes-gourmet-overthetop-treats-loaded-candy-whipped-cream-experience-ultimate-milkshake-355991610.jpg" alt="Ice Cream Parlor">
+                        <span class="facility-category">Special Offer</span>
+                    </div>
+                    <div class="facility-info">
+                        <h3>Gelato & Ice Cream</h3>
+                        <p>Handcrafted gelato, milkshakes, and sundaes with seasonal flavors and toppings (summer only).</p>
+                        <div class="facility-meta">
+                            <div class="facility-location">
+                                <i class="fas fa-map-marker-alt"></i> Outdoor Terrace
+                            </div>
+                            <span class="availability unavailable">Seasonal</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- In-Theater Dining -->
+                <div class="facility-card" data-category="food special">
+                    <div class="facility-img">
+                        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="In-Theater Dining">
+                        <span class="facility-category">Special Offer</span>
+                    </div>
+                    <div class="facility-info">
+                        <h3>In-Theater Dining</h3>
+                        <p>Full meal service delivered to your premium seat during the movie (reservation required).</p>
+                        <div class="facility-meta">
+                            <div class="facility-location">
+                                <i class="fas fa-map-marker-alt"></i> Theaters 1-3
+                            </div>
+                            <span class="availability available">Available</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <script>
+        // Logout Button event listener
+        document.getElementById('logoutBtn').addEventListener('click', (e) => {
+            e.preventDefault();
+            localStorage.removeItem('loggedIn');
+            alert('🔒 Session ended. You have logged out successfully.');
+            window.location.href = '../../../mainhome.html';
+        });
+
+        // Tab functionality for food/drinks section
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const facilityCards = document.querySelectorAll('.facility-card');
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Remove active class from all buttons
+                tabBtns.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                this.classList.add('active');
+                
+                const category = this.dataset.category;
+                
+                // Filter cards
+                facilityCards.forEach(card => {
+                    if (category === 'all' || card.dataset.category.includes(category)) {
+                        card.classList.remove('hidden');
+                        setTimeout(() => {
+                            card.style.display = 'block';
+                        }, 50);
+                    } else {
+                        card.classList.add('hidden');
+                        setTimeout(() => {
+                            card.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            });
+        });
+
+        // Animation on scroll
+        const animateOnScroll = function() {
+            const elements = document.querySelectorAll('.facility-card, .toilet-card, .section-title');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementPosition < windowHeight - 100) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+
+        // Set initial state for animation
+        window.addEventListener('load', function() {
+            document.querySelectorAll('.facility-card, .toilet-card').forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'all 0.5s ease';
+            });
+            
+            animateOnScroll();
+        });
+
+        window.addEventListener('scroll', animateOnScroll);
+    </script>
+</body>
+</html>

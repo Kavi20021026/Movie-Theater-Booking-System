@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../navbar.css">
+    <title>Popcorn Place - Dashboard</title>
+    <style>
+        body {
+            background-color: #0c0b0e;
+            background-image: radial-gradient(circle at 50% 50%, #1e1b24 0%, #0c0b0e 80%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            width: 100vw;
+            padding-bottom: 50px;
+        }
+
+        /* Conflicting navbar styles removed */
+
+        .dashboard-header {
+            width: 90%;
+            max-width: 1200px;
+            margin-bottom: 15px;
+            color: #fff;
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .cards {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 20px;
+            justify-content: start;
+        }
+
+        .cards .card {
+            position: relative;
+            height: 240px;
+            border-radius: 14px;
+            overflow: hidden;
+            background: #14151a;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            cursor: pointer;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+        }
+
+        .cards .card:hover {
+            transform: translateY(-8px);
+            border-color: #ffcc00;
+            box-shadow: 0 15px 30px rgba(255, 204, 0, 0.2);
+        }
+
+        .cards .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .cards .card:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Premium Placeholder for missing images */
+        .card-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            text-align: center;
+            background: linear-gradient(135deg, #1d1e22 0%, #0c0d10 100%);
+            color: #eee;
+            border-radius: 14px;
+        }
+
+        .card-placeholder i {
+            font-size: 32px;
+            color: #ffcc00;
+            margin-bottom: 12px;
+            filter: drop-shadow(0 2px 5px rgba(0,0,0,0.3));
+        }
+
+        .card-placeholder span {
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div style="display: flex; align-items: center;">
+                <img src="../images/logo.png" alt="Popcorn Place Logo" class="logo-img">
+                <div class="logo"><span>Popcorn</span> Place</div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="../booknow.html">Home</a></li>
+                    <li><a href="../services/2D 3D.html">Services</a></li>
+                    <li><a href="../contact/new 1.html">Contact Us</a></li>
+                    <li><a href="../facilities/Food.html">Food & Beverages</a></li>
+                    <li><a href="../facilities/Rest rooms.html">Other Facilities</a></li>
+                    <li><a href="../Gallery/gallary .html">Gallery</a></li>
+                    <li><a href="#" id="logoutBtn" style="color: #ff3366;"><i class="bi bi-box-arrow-right"></i> Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="dashboard-header">
+        Recommended Movies
+    </div>
+
+    <div class="cards">
+        <!-- Jumanji -->
+        <a href="book.html?movie=jumanji" class="card">
+            <img src="2.webp" alt="Jumanji" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="card-placeholder" style="display: none;">
+                <i class="bi bi-film"></i>
+                <span>Jumanji: Next Level</span>
+            </div>
+        </a>
+
+        <!-- Jurassic World -->
+        <a href="book.html?movie=jurassic_world_rebirth" class="card">
+            <img src="jurassic_world_rebirth_xlg.jpg" alt="Jurassic World Rebirth" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="card-placeholder" style="display: none;">
+                <i class="bi bi-film"></i>
+                <span>Jurassic World Rebirth</span>
+            </div>
+        </a>
+
+        <!-- Thunderbolts -->
+        <a href="book.html?movie=thunderbolts" class="card">
+            <img src="thunderbolts_xlg.jpg" alt="Thunderbolts" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="card-placeholder" style="display: none;">
+                <i class="bi bi-film"></i>
+                <span>Thunderbolts</span>
+            </div>
+        </a>
+        <!-- Spider-Man: Brand New Day -->
+        <a href="book.html?movie=spiderman_brand_new_day" class="card">
+            <img src="../images/images (1).jpg" alt="Spider-Man: Brand New Day" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="card-placeholder" style="display: none;">
+                <i class="bi bi-film"></i>
+                <span>Spider-Man: Brand New Day</span>
+            </div>
+        </a>
+
+        <!-- Jawan -->
+        <a href="book.html?movie=jawan" class="card">
+            <img src="img/collage romance.jpg" alt="Jawan" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="card-placeholder" style="display: none;">
+                <i class="bi bi-film"></i>
+                <span>Jawan</span>
+            </div>
+        </a>
+
+        <!-- Eternals -->
+        <a href="book.html?movie=eternals" class="card">
+            <img src="img/eternals.jpg" alt="Eternals" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="card-placeholder" style="display: none;">
+                <i class="bi bi-film"></i>
+                <span>Eternals</span>
+            </div>
+        </a>
+
+        <!-- Spiderman -->
+        <a href="book.html?movie=spiderman" class="card">
+            <img src="img/spiderman.jpg" alt="Spider-man" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="card-placeholder" style="display: none;">
+                <i class="bi bi-film"></i>
+                <span>Spider-man: No Way Home</span>
+            </div>
+        </a>
+
+        <!-- The Boys -->
+        <a href="book.html?movie=theboys" class="card">
+            <img src="img/the boys.jpg" alt="The Boys" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="card-placeholder" style="display: none;">
+                <i class="bi bi-film"></i>
+                <span>The Boys</span>
+            </div>
+        </a>
+
+        <!-- Thor -->
+        <a href="book.html?movie=thor" class="card">
+            <img src="img/thor love of thunder.jpg" alt="Thor" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="card-placeholder" style="display: none;">
+                <i class="bi bi-film"></i>
+                <span>Thor: Love & Thunder</span>
+            </div>
+        </a>
+
+        <!-- Top Gun -->
+        <a href="book.html?movie=topgun" class="card">
+            <img src="img/topgun.jpg" alt="Top Gun" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="card-placeholder" style="display: none;">
+                <i class="bi bi-film"></i>
+                <span>Top Gun: Maverick</span>
+            </div>
+        </a>
+
+        <!-- John Wick -->
+        <a href="book.html?movie=johnwick" class="card">
+            <img src="img/Jhon Wick.jpg" alt="John Wick" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="card-placeholder" style="display: none;">
+                <i class="bi bi-film"></i>
+                <span>John Wick: Chapter 4</span>
+            </div>
+        </a>
+    </div>
+    <script>
+        document.getElementById('logoutBtn').addEventListener('click', (e) => {
+            e.preventDefault();
+            localStorage.removeItem('loggedIn');
+            alert('🔒 Session ended. You have logged out successfully.');
+            window.location.href = '../../../mainhome.html';
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact Us - Popcorn Place</title>
+  <link rel="stylesheet" href="new 1.css">
+  <link rel="stylesheet" href="../navbar.css">
+</head>
+<body>
+  <header>
+    <div class="navbar">
+      <div style="display: flex; align-items: center;">
+        <img src="../images/logo.png" alt="Popcorn Place Logo" class="logo-img">
+        <div class="logo"><span>Popcorn</span> Place</div>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="../booknow.html">Home</a></li>
+          <li><a href="../services/2D 3D.html">Services</a></li>
+          <li><a href="../contact/new 1.html">Contact Us</a></li>
+          <li><a href="../facilities/Food.html">Food & Beverages</a></li>
+          <li><a href="../facilities/Rest rooms.html">Other Facilities</a></li>
+          <li><a href="../Gallery/gallary .html">Gallery</a></li>
+          <li><a href="#" id="logoutBtn" style="color: #ff3366;"><i class="bi bi-box-arrow-right"></i> Logout</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="contact-container">
+    <h1>Contact Us</h1>
+    <p>We’d love to hear from you! Please fill out the form below.</p>
+    
+    <form action="#" method="post">
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="message">Your Message</label>
+      <textarea id="message" name="message" rows="6" required></textarea>
+
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Popcorn Place. All Rights Reserved.</p>
+  </footer>
+  <script>
+    document.getElementById('logoutBtn').addEventListener('click', (e) => {
+      e.preventDefault();
+      localStorage.removeItem('loggedIn');
+      alert('🔒 Session ended. You have logged out successfully.');
+      window.location.href = '../../../mainhome.html';
+    });
+  </script>
+</body>
+</html>

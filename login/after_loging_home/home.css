@@ -1,0 +1,216 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+body {
+  font-family: 'Outfit', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-image: url("images/background.jpg"); 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: #f5f5f5;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  backdrop-filter: brightness(60%) contrast(100%);
+  animation: fadeIn 1.2s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.logo-img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%; 
+  object-fit: cover;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(12, 11, 14, 0.75);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 15px 40px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 26px;
+  font-weight: 800;
+  color: #fff;
+  margin-left: 12px;
+  flex-grow: 1; 
+  text-align: left;
+}
+
+.logo span {
+  color: #ffcc00;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+
+nav ul li {
+  margin: 0 16px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #ccc;
+  font-size: 15px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  position: relative;
+  padding: 4px 0;
+}
+
+nav ul li a:hover {
+  color: #ffcc00;
+}
+
+nav ul li a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #ffcc00;
+  transition: width 0.3s ease;
+}
+
+nav ul li a:hover::after {
+  width: 100%;
+}
+
+main {
+  padding: 60px 40px;
+  background: rgba(19, 20, 26, 0.65);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  margin: 60px auto;
+  width: 90%;
+  max-width: 1100px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+  text-align: center;
+}
+
+h1 {
+  font-size: 42px;
+  font-weight: 800;
+  margin-top: 0;
+  margin-bottom: 24px;
+  letter-spacing: 1px;
+  line-height: 1.2;
+}
+
+.highlight {
+  color: #ffcc00;
+}
+
+.contact-btn {
+  background-color: #ffcc00;
+  color: black;
+  padding: 12px 30px;
+  margin: 10px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 204, 0, 0.3);
+}
+
+.contact-btn:hover {
+  background-color: #ffcc00;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 204, 0, 0.5);
+}
+
+.contact-btn.outline-btn {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: none;
+}
+
+.contact-btn.outline-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+  box-shadow: none;
+}
+
+.events {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 25px;
+  justify-content: center;
+  margin-top: 45px;
+}
+
+.event {
+  margin: 0;
+  text-align: center;
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #14151a;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  cursor: pointer;
+}
+
+.event:hover {
+  transform: translateY(-6px);
+  border-color: #ffcc00;
+  box-shadow: 0 15px 30px rgba(255, 204, 0, 0.2);
+}
+
+.event img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.event:hover img {
+  transform: scale(1.05);
+}
+
+.event p {
+  margin: 12px 0;
+  color: #eee;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+footer {
+  background-color: rgba(12, 11, 14, 0.85);
+  backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 24px;
+  text-align: center;
+  margin-top: auto;
+  color: #888;
+  font-size: 14px;
+}

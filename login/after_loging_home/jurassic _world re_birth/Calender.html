@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Animated Booking Form</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #767672, #767672);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    .booking-card {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+      width: 350px;
+      opacity: 0;
+      transform: translateY(40px);
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      color: #555;
+      font-weight: 500;
+    }
+
+    input[type="date"],
+    select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      font-size: 16px;
+      margin-top: 5px;
+      box-sizing: border-box;
+      transition: all 0.3s ease;
+      outline: none;
+    }
+
+    input:focus,
+    select:focus {
+      border-color: #fbd516;
+      box-shadow: 0 0 5px #fbd516;
+    }
+
+    .fade-in-select {
+      opacity: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: opacity 0.5s ease, max-height 0.5s ease;
+    }
+
+    .fade-in-select.visible {
+      opacity: 1;
+      max-height: 200px;
+      margin-top: 10px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 20px;
+      border: none;
+      border-radius: 10px;
+      background-color: #ffcc00;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    button:hover {
+      background-color: #010101;
+      transform: translateY(-2px);
+    }
+
+    .message {
+      margin-top: 15px;
+      text-align: center;
+      font-weight: bold;
+      color: green;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="booking-card">
+    <h2>Book Your Slot</h2>
+    <form id="bookingForm">
+      <label for="date">Select Date:</label>
+      <input type="date" id="date" name="date" required>
+
+      <div id="slotWrapper" class="fade-in-select">
+        <label for="time">Available Time Slots:</label>
+        <select id="time" name="time" required>
+          <option value="">-- Select a date first --</option>
+        </select>
+      </div>
+      <a href="index.html">
+        <button class="submit">Book Now</button></a>
+    </form>
+    <div class="message" id="message"></div>
+  </div>
+
+  <script>
+    // Disable past dates
+    const today = new Date().toISOString().split("T")[0];
+    document.getElementById("date").setAttribute("min", today);
+
+    // Sample available slots
+    const availableSlots = {
+      "2025-06-18": ["10:00", "11:30", "14:00"],
+      "2025-06-19": ["09:00", "13:00", "15:30", "17:00"],
+      "2025-06-20": ["12:00", "13:30", "16:00"],
+    };
+
+    const dateInput = document.getElementById("date");
+    const timeSelect = document.getElementById("time");
+    const slotWrapper = document.getElementById("slotWrapper");
+    const message = document.getElementById("message");
+
+    dateInput.addEventListener("change", function () {
+      const selectedDate = this.value;
+      timeSelect.innerHTML = "";
+
+      if (availableSlots[selectedDate]) {
+        availableSlots[selectedDate].forEach(time => {
+          const option = document.createElement("option");
+          option.value = time;
+          option.textContent = time;
+          timeSelect.appendChild(option);
+        });
+      } else {
+        const option = document.createElement("option");
+        option.value = "";
+        option.textContent = "No slots available";
+        timeSelect.appendChild(option);
+      }
+
+      slotWrapper.classList.add("visible");
+    });
+
+    document.getElementById('bookingForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const date = dateInput.value;
+      const time = timeSelect.value;
+
+      if (date && time) {
+        message.style.color = "green";
+        message.textContent = `✅ Booking Confirmed on ${date} at ${time}`;
+      } else {
+        message.style.color = "red";
+        message.textContent = '❌ Please select both date and time.';
+      }
+    });
+  </script>
+
+</body>
+
+</html>
